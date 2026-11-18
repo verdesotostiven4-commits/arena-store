@@ -1,3 +1,15 @@
+# Vista previa de Arena Store
+
+## Abrir ahora sin Vercel
+
+**[ABRIR ARENA STORE (VISTA PREVIA)](https://raw.githack.com/verdesotostiven4-commits/arena-store/desarrollo/index.html)**
+
+GitHack carga HTML/CSS/JS desde la rama `desarrollo` de este repositorio público, con una caché temporal. No crea despliegues de Vercel ni requiere activar GitHub Pages. Para revisar cambios recientes puedes actualizar la página (o agregar `?v=2` si el navegador guarda caché).
+
+**IMPORTANTE:** GitHack es un servicio de terceros; usar solo para revisar el prototipo público. No publicar secretos, contraseñas ni datos reales de usuarios.
+
+---
+
 # Vista previa de Arena Store sin gastar despliegues de Vercel
 
 ## GitHub Pages (recomendado para móvil)
