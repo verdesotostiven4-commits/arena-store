@@ -157,3 +157,5 @@ a,button{-webkit-tap-highlight-color:transparent}
  .panel{padding:15px}
  .steps span{font-size:10px}
 }
+
+.userchip{display:inline-flex;gap:8px;align-items:center}.topnav-search input::placeholder{color:#84949a}

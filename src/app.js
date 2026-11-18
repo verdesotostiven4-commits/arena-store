@@ -85,9 +85,11 @@ function favorites(){
  return '<div class="eyebrow">MI COLECCIÓN</div><h2 style="margin:7px 0 18px">FAVORITOS</h2>'+(mine.length?'<div class="accountgrid">'+mine.map(card).join("")+'</div>':'<div class="empty">Aún no hay cuentas guardadas. <a href="#/explorar" class="link">Explorar cuentas</a></div>');
 }
 function profile(){
- const posts=store.posts.map(a=>'<div class="social-row"><span class="avatar">★</span><div><b>'+esc(a.title)+'</b><p class="muted">Nivel '+a.level+' · '+countItems(a)+' misceláneas · solo visible para ti</p></div><a class="button small" href="#/detalle/'+esc(a.id)+'">Abrir</a><button data-act="deletepost" data-id="'+esc(a.id)+'" class="button small">Eliminar</button></div>').join("");
- return '<div class="eyebrow">ZONA DE OPERADOR</div><h2 style="margin:8px 0 18px">MI PERFIL</h2><div class="side-by-side"><div class="panel"><h3>Identidad local</h3><p class="muted">Este alias es solo para el prototipo, no representa una cuenta autenticada.</p><form id="alias-form" class="stack" style="margin-top:15px"><div class="field"><label>Alias</label><input name="alias" minlength="2" maxlength="24" required value="'+esc(store.alias)+'"></div><button type="submit" class="button primary">Guardar alias</button></form><div class="divider"></div><p class="muted">Favoritos: '+store.favorites.length+' · Siguiendo: '+store.follows.length+'</p></div><div class="panel"><h3>Mis publicaciones locales ('+store.posts.length+')</h3>'+(posts||'<p class="muted">Todavía no has creado una publicación.</p>')+'<div class="two-actions"><a href="#/publicar" class="button primary">＋ Nueva publicación</a></div></div></div>';
+ const posts=store.posts.map(a=>'<div class="social-row"><span class="avatar">★</span><div><b>'+esc(a.title)+'</b><p class="muted">Nivel '+a.level+' · '+countItems(a)+' objetos · Solo visible para ti</p></div><a class="button small" href="#/detalle/'+esc(a.id)+'">Ver</a><button data-act="deletepost" data-id="'+esc(a.id)+'" class="button small">Eliminar</button></div>').join("");
+ const avatar=store.avatarData?'<img src="'+esc(store.avatarData)+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%" alt="Foto de perfil">':'◉';
+ return '<div class="eyebrow">MI ARENA STORE</div><h2 style="margin:8px 0 18px">MI PERFIL</h2><div class="side-by-side"><div class="panel"><h3>Identidad de operador</h3><div class="social-row"><span class="avatar" style="width:58px;height:58px">'+avatar+'</span><div><strong>'+esc(store.alias)+'</strong><p class="muted">Perfil local</p></div></div><div class="field"><label>Foto de perfil</label><input id="avatar-file" type="file" accept="image/jpeg,image/png,image/webp"></div><form id="alias-form" class="stack" style="margin-top:15px"><div class="field"><label>Nombre de usuario</label><input name="alias" minlength="2" maxlength="24" required value="'+esc(store.alias)+'"></div><button type="submit" class="button primary">Guardar perfil</button></form><div class="divider"></div><p class="muted">Favoritos: '+store.favorites.length+' · Siguiendo: '+store.follows.length+'</p><p class="footnote">Esta versión guarda tu perfil en el navegador. El registro e inicio de sesión en línea se conectarán en la fase de autenticación.</p></div><div class="panel"><h3>Mis publicaciones ('+store.posts.length+')</h3>'+(posts||'<p class="muted">Todavía no has creado una publicación.</p>')+'<div class="two-actions"><a href="#/publicar" class="button primary">＋ Nueva publicación</a></div></div></div>';
 }
+
 function messages(id){
  const a=account(id);
  const convo=store.messages.filter(m=>m.accountId===(id||"general"));
@@ -129,6 +131,19 @@ document.addEventListener("submit",async e=>{
  if(form.id==="message-form"){const text=String(d.get("text")||"").trim();if(!text)return;store.messages.push({accountId:form.dataset.id||"general",text:text.slice(0,300),at:Date.now()});persist();render();toast("Mensaje guardado localmente");return;}
  if(form.id==="comment-form"){const text=String(d.get("comment")||"").trim();if(!text)return;store.comments.push({accountId:form.dataset.id,author:store.alias,text:text.slice(0,300)});persist();render();toast("Comentario local añadido");}
 });
+document.addEventListener("change",async e=>{
+ const el=e.target;
+ if(el.id==="shots"){
+  const files=Array.from(el.files||[]).slice(0,4),box=document.getElementById("shot-preview");
+  if((el.files||[]).length>4)toast("Se usarán las primeras cuatro capturas.");
+  if(box){box.replaceChildren();files.forEach((file,i)=>{const img=document.createElement("img"),url=URL.createObjectURL(file);img.src=url;img.alt="Captura "+(i+1);img.onload=()=>{if(i===0&&img.naturalHeight>img.naturalWidth)toast("Usa preferentemente una captura horizontal como portada.");URL.revokeObjectURL(url);};img.onerror=()=>URL.revokeObjectURL(url);box.append(img);});}
+ }
+ if(el.id==="avatar-file"&&el.files?.[0]){
+  try{store.avatarData=await shrinkPhoto(el.files[0]);persist();render();toast("Foto actualizada");}catch(err){toast("No se pudo procesar la foto");}
+ }
+});
+document.addEventListener("reset",e=>{if(e.target.id==="publish-form"){const preview=document.getElementById("shot-preview");if(preview)preview.replaceChildren();}});
+
 document.addEventListener("click",e=>{
  const btn=e.target.closest("[data-act]");if(!btn)return;
  const id=btn.dataset.id;
