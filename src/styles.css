@@ -434,3 +434,88 @@ h2{font-size:clamp(25px,2.6vw,34px)}
  .results-head .button{font-size:11px;padding:8px 10px;white-space:nowrap}
  .layout{display:flex;flex-direction:column;gap:15px}
 }
+
+
+/* v4: fotografía de juego real, legibilidad y catálogo limpio */
+:root {--bg:#080c0f;--surface:#10161b;--orange:#ea8c4d}
+body{background:#080c0f}
+.topbar{background:#000;border-bottom:1px solid #24292b}
+.brandimg{background:#000;object-fit:contain}
+.page{padding-top:22px}
+.home-hero{border-color:#283137;background:#12181c;box-shadow:none}
+.home-hero:after{display:none}
+.home-hero h1{font-size:clamp(33px,4vw,53px);letter-spacing:-.02em}
+.hero-copy{padding:32px}
+.hero-art{background:#090e12}
+.hero-art img{object-fit:contain;object-position:center;background:#090e12}
+.hero-art:after{background:linear-gradient(0deg,#0b1013 0,transparent 35%)}
+.hero-art-caption{bottom:13px;left:15px}
+.home-tabs a{border-radius:8px}
+.listing-card{border-color:#303941;background:#11171c;box-shadow:none}
+.listing-card:hover{transform:none}
+.listing-card .card-top{height:auto;aspect-ratio:1536/691;background:#090d10}
+.listing-card .card-cover{height:100%;width:100%;object-fit:contain;object-position:center}
+.listing-card .card-top:before{background:linear-gradient(180deg,#0008,transparent 45%);pointer-events:none}
+.listing-card .card-body{padding:14px 16px}
+.listing-card .seller{margin-bottom:8px}
+.listing-card .listing-title{font-size:22px;min-height:0;margin:0 0 12px}
+.listing-card .listing-stats{gap:9px}
+.listing-card .listing-stats strong{font-size:20px}
+.listing-card .price{font-size:26px}
+.flag.referencia{background:#13191c;color:#e8edf0;border-color:#637078}
+.listing-card:has(.sample-label) .listing-inventory{display:none}
+.listing-card:has(.sample-label) .price{font-size:15px;color:#c9d5d8;font-family:Inter,system-ui,sans-serif}
+.listing-card:has(.sample-label) .card-bottom{align-items:center}
+.listing-card:has(.sample-label) .listing-open{background:#20292d;border-color:#3c515b;color:#edf1f2}
+.card-image-link{overflow:hidden}
+.card-top.missing-cover:after,.hero-art.missing-cover:before,.detail-cover.missing-cover:after{
+ content:"Captura no disponible";position:absolute;inset:0;display:grid;place-items:center;
+ font-size:12px;color:#b7c3c7;background:#10161a;z-index:0;
+}
+.detail-cover{position:relative;background:#0d1316}
+.detail-cover .cover-img{display:block;aspect-ratio:1536/691;width:100%;height:auto;object-fit:contain}
+.gallery{margin:0 0 14px}
+.gallery button{aspect-ratio:1536/691;border-radius:8px}
+.gallery img{object-fit:contain}
+.inventory .item-icon,.mini-item .item-icon{background:transparent}
+.inventory .item img,.misc-preview img{object-fit:contain}
+.misc-preview{background:#10171b}
+.listing-card .fav{background:#06090bbd}
+.home-guide{background:#10161b}
+@media(max-width:760px){
+ .topinner{min-height:59px}
+ .brandimg{width:175px;max-width:54vw}
+ .page{padding-top:12px}
+ .home-hero{display:flex;flex-direction:column-reverse;min-height:0;border-radius:11px}
+ .home-hero .hero-art{position:relative;inset:auto;opacity:1;width:100%;height:auto;aspect-ratio:1536/691;min-height:0;pointer-events:auto}
+ .home-hero .hero-art img{width:100%;height:100%;object-fit:contain}
+ .home-hero .hero-art-caption{display:none}
+ .hero-copy{padding:19px 17px}
+ .home-hero h1{font-size:32px;margin:7px 0 10px;line-height:1.03}
+ .home-hero p{font-size:12px}
+ .home-hero .hero-search{display:flex;margin-top:15px}
+ .home-hero .hero-search button{font-size:12px}
+ .hero-links{display:flex;margin-top:11px}
+ .home-tabs{margin-top:12px}
+ .accountgrid{grid-template-columns:1fr;gap:12px}
+ .listing-card .card-top{height:auto;aspect-ratio:1536/691}
+ .listing-card .card-cover{object-fit:contain}
+ .listing-card .card-body{padding:13px 14px}
+ .listing-card .listing-title{font-size:23px}
+ .listing-card .listing-stats{padding:12px 0}
+ .listing-card .listing-stats small{font-size:10px}
+ .listing-card .listing-stats strong{font-size:19px}
+ .listing-card .card-bottom{align-items:center}
+ .listing-card .listing-open{min-width:115px}
+ .sectionhead h2{font-size:27px}
+ .detail-cover .cover-img{aspect-ratio:1536/691}
+ .inventory{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .inventory .item-icon{height:125px}
+ .misc-grid{grid-template-columns:1fr}
+ .bottomnav{background:#0b1115}
+}
+@media(max-width:365px){
+ .brandimg{width:147px}
+ .listing-stats strong{font-size:17px}
+ .home-hero h1{font-size:29px}
+}
