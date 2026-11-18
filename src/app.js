@@ -27,11 +27,11 @@ function accounts(){return [...store.posts.filter(x=>x.status!=="archivado"),...
 function account(id){return accounts().find(x=>x.id===id);}
 function inventory(a){return valuables.filter(it=>Number(a.items?.[it.id]||0)>0);}
 function countItems(a){return Object.values(a.items||{}).reduce((v,n)=>v+Number(n||0),0);}
-function thumb(it){return '<span class="item-icon"><img loading="lazy" alt="" src="'+esc(it.image||"/assets/favicon.svg")+'"></span>';}
+function thumb(it){return '<span class="item-icon"><img loading="lazy" alt="" src="'+esc(it.image||"assets/favicon.svg")+'"></span>';}
 function itemTile(it,qty){return '<div class="item">'+thumb(it)+'<div><div>'+esc(it.name)+'</div><b>×'+Number(qty||0)+'</b></div></div>';}
 function navbar(page){
  const nav=[["inicio","Inicio"],["explorar","Explorar"],["publicar","Publicar"],["comunidad","Comunidad"]];
- return '<header class="topbar"><div class="wrap topinner"><a href="#/inicio" aria-label="Arena Store, inicio"><img class="brandimg" src="/assets/logo.png" alt="Arena Store"></a><form class="topnav-search" id="search-form"><input name="query" placeholder="Buscar cuentas, Koens, colecciones..."></form><nav class="nav">'+nav.map(([id,label])=>'<a href="#/'+id+'"><button class="'+(page===id?"active":"")+'">'+label+'</button></a>').join("")+'</nav><div class="headright"><a href="#/mensajes" aria-label="Mensajes"><button class="button ghost">✉</button></a><a href="#/favoritos" aria-label="Favoritos"><button class="button ghost">♡ <span class="tiny">'+store.favorites.length+'</span></button></a><a href="#/perfil" class="userchip">◉ '+esc(store.alias||"Operador")+'</a></div></div></header>';
+ return '<header class="topbar"><div class="wrap topinner"><a href="#/inicio" aria-label="Arena Store, inicio"><img class="brandimg" src="assets/logo.png" alt="Arena Store"></a><form class="topnav-search" id="search-form"><input name="query" placeholder="Buscar cuentas, Koens, colecciones..."></form><nav class="nav">'+nav.map(([id,label])=>'<a href="#/'+id+'"><button class="'+(page===id?"active":"")+'">'+label+'</button></a>').join("")+'</nav><div class="headright"><a href="#/mensajes" aria-label="Mensajes"><button class="button ghost">✉</button></a><a href="#/favoritos" aria-label="Favoritos"><button class="button ghost">♡ <span class="tiny">'+store.favorites.length+'</span></button></a><a href="#/perfil" class="userchip">◉ '+esc(store.alias||"Operador")+'</a></div></div></header>';
 }
 function bottomnav(page){
   const nav=[["inicio","⌂","Inicio"],["explorar","⌕","Cuentas"],["publicar","＋","Publicar"],["favoritos","♡","Favoritos"],["perfil","♙","Perfil"]];
