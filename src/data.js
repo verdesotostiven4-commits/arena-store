@@ -1,13 +1,13 @@
 export const money=n=>new Intl.NumberFormat("es-EC").format(Number(n||0));
 export const valuables=[
-{id:"jaula",name:"Caja de música de jaula dorada",value:465477,image:"/assets/items/jaula.png"},
-{id:"busto",name:"Escultura majestuosa",value:485851,image:"/assets/items/busto.png"},
-{id:"reloj",name:"Reloj de Faetón",value:437944,image:"/assets/items/reloj.png"},
-{id:"posicion",name:"Módulo de posición de objetivo",value:442052,image:"/assets/items/posicion.png"},
-{id:"inyeccion",name:"Inyección clasificada Elysium",value:1512000,image:"/assets/items/inyeccion.png"},
-{id:"maletin",name:"Maletín de materiales peligrosos de Utopía",value:2035000,image:"/assets/items/maletin.png"},
-{id:"elefante",name:"Elefante de la fortuna",value:432480,image:"/assets/items/elefante.png"},
-{id:"caballo",name:"Estatua de oro de un corcel encabritado",value:202600,image:"/assets/items/caballo.png"}
+{id:"jaula",name:"Caja de música de jaula dorada",value:465477,image:"assets/items/jaula.png"},
+{id:"busto",name:"Escultura majestuosa",value:485851,image:"assets/items/busto.png"},
+{id:"reloj",name:"Reloj de Faetón",value:437944,image:"assets/items/reloj.png"},
+{id:"posicion",name:"Módulo de posición de objetivo",value:442052,image:"assets/items/posicion.png"},
+{id:"inyeccion",name:"Inyección clasificada Elysium",value:1512000,image:"assets/items/inyeccion.png"},
+{id:"maletin",name:"Maletín de materiales peligrosos de Utopía",value:2035000,image:"assets/items/maletin.png"},
+{id:"elefante",name:"Elefante de la fortuna",value:432480,image:"assets/items/elefante.png"},
+{id:"caballo",name:"Estatua de oro de un corcel encabritado",value:202600,image:"assets/items/caballo.png"}
 ];
 export const outfits=[
 {code:"fortuna",name:"Set Fortuna"},
