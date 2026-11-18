@@ -1,15 +1,34 @@
-# Arena Store
+# Arena Store · prototipo funcional
 
-Marketplace comunitario de **fichas de cuentas completas de Arena Breakout Mobile**. Proyecto independiente, en fase de demostración.
+**Arena Store** es una comunidad independiente de fans para explorar y documentar **cuentas completas** de Arena Breakout Mobile. Las misceláneas, cosméticos y recursos son atributos de cada cuenta, **no productos individuales**.
 
-> ⚠️ DEMO: no pagos, custodia de fondos, transferencia de credenciales ni verificación real. No afiliado con el editor del juego.
+## Estado actual
+- ✅ Web responsive (PC + móvil), navegación y fichas de cuentas completas.
+- ✅ Filtros, búsqueda, favoritos, perfil, publicaciones, inventario visual con cantidades, comunidad y mensajería simulada.
+- ✅ Persistencia local del navegador y ejemplos editables, sin servidor.
+- ✅ Auto-despliegues de Vercel desactivados en `vercel.json`.
+- ⏳ Autenticación, base de datos, imágenes finales, moderación real, pagos y transferencias NO conectados.
 
-## Empezar
+**Importante:** todo el contenido transaccional es una DEMO. Nunca introduzcas claves, correos de recuperación ni credenciales del juego. Los usuarios, precios y reseñas de ejemplo son ficticios. Proyecto no afiliado al juego ni a sus creadores.
 
-Abre `index.html` en tu navegador (o ejecuta `python -m http.server 8000` y visita `http://localhost:8000`). Los datos de demostración se guardan únicamente en el navegador.
+## Ejecutar
+Sin dependencias ni build:
+```bash
+python -m http.server 8000
+```
+Abre http://localhost:8000, o importa el repositorio en Vercel como proyecto estático (pero se debe publicar manualmente). La web usa módulos ES; abrir index.html directamente como archivo puede estar limitado por CORS del navegador.
 
-## Despliegues
+## Estructura
+- `index.html`: documento HTML inicial.
+- `src/app.js`: navegación, formularios, catálogo, vistas e interacciones.
+- `src/data.js`: artículos de inventario y cuentas de ejemplo.
+- `src/styles.css`: diseño responsive.
+- `assets/brand.svg`: identidad provisional vectorial (reemplazar por logo final autorizado).
+- `supabase/schema.sql`: modelo de datos y seguridad RLS, no aplicado todavía.
+- `docs/ROADMAP.md`: pendientes para versión pública.
 
-`vercel.json` tiene `git.deploymentEnabled: false`, así que los commits no disparan despliegues automáticos de Vercel. Publicar manualmente solo después de comprobar la versión.
+## Política de despliegue
+`vercel.json` usa `git.deploymentEnabled=false` para **no desplegar con cada commit**. Controla versiones en GitHub y realiza despliegues manuales cuando una versión esté revisada.
 
-Consulta `docs/ROADMAP.md` para los pendientes de lanzamiento real.
+## Avisos
+Verifica los términos del juego y el procesador de pagos antes de operar con cuentas de terceros. No custodiar dinero ni credenciales hasta contar con una solución autorizada y garantías.
