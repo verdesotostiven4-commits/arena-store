@@ -1,4 +1,5 @@
 import {money,valuables,sampleAccounts,ops,outfits} from "./data.js";
+import {premiumAssets} from "./premiumAssets.js";
 
 const key="arena-store-demo-v1";
 const defaults={alias:"Operador",favorites:[],posts:[],likes:[],follows:[],messages:[],comments:[],reports:[],views:{}};
@@ -27,7 +28,7 @@ function accounts(){return [...store.posts.filter(x=>x.status!=="archivado"),...
 function account(id){return accounts().find(x=>x.id===id);}
 function inventory(a){return valuables.filter(it=>Number(a.items?.[it.id]||0)>0);}
 function countItems(a){return Object.values(a.items||{}).reduce((v,n)=>v+Number(n||0),0);}
-function thumb(it){return '<span class="item-icon"><img loading="lazy" alt="" src="'+esc(it.image||"assets/favicon.svg")+'"></span>';}
+function thumb(it){return '<span class="item-icon"><img loading="lazy" alt="" src="'+esc(premiumAssets[it.id]||it.image||"assets/favicon.svg")+'"></span>';}
 function itemTile(it,qty){return '<div class="item">'+thumb(it)+'<div><div>'+esc(it.name)+'</div><b>×'+Number(qty||0)+'</b></div></div>';}
 function navbar(page){
  const nav=[["inicio","Inicio"],["explorar","Explorar"],["publicar","Publicar"],["comunidad","Comunidad"]];
