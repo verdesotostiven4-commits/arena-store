@@ -1,14 +1,27 @@
-# Vista previa de Arena Store (sin Vercel)
+# Vista previa de Arena Store sin gastar despliegues de Vercel
 
-Rama de trabajo: **desarrollo**. Producción: **main**.
+## GitHub Pages (recomendado para móvil)
 
-[VER LA WEB EN STACKBLITZ](https://stackblitz.com/github/verdesotostiven4-commits/arena-store/tree/desarrollo?startScript=dev&view=preview)
+Esta web es HTML, CSS y JavaScript estático: no necesita un servidor Node para mostrar la interfaz.
 
-StackBlitz importa la rama y ejecuta el servidor Vite en el navegador. No crea despliegues de Vercel. En el panel de vista previa, usa **Open in New Tab** para verla como una web independiente. Cierra y vuelve a abrir el enlace para cargar los últimos cambios de GitHub.
+### Activación (solo una vez)
+1. Abre https://github.com/verdesotostiven4-commits/arena-store/settings/pages
+2. En **Build and deployment**, elige **Deploy from a branch**.
+3. Elige rama **desarrollo**, carpeta **/(root)** y pulsa **Save**.
+4. Cuando GitHub Pages anuncie que está publicada, abre https://verdesotostiven4-commits.github.io/arena-store/
 
-- **No mezclar** la rama de desarrollo con main sin revisión.
-- No añadir contraseñas, claves privadas, ni datos de recuperación de cuentas.
-- Los formularios y comentarios aún operan localmente en el navegador; no hay autenticación ni pagos reales.
-- El sitio usa un catálogo de ejemplo hasta conectar almacenamiento y cuentas reales.
+Los cambios que se envíen a desarrollo se publicarán en GitHub Pages sin utilizar despliegues de Vercel ni modificar main. GitHub Pages sí realiza su propia publicación gratuita para repositorios públicos.
 
-Para probar localmente: `npm install` y `npm run dev`.
+## Separación de entornos
+- Rama **main**: producción actual. No la mezcles con desarrollo hasta aprobar la interfaz.
+- Rama **desarrollo**: mejoras visuales, formularios y vistas previas.
+- Vercel: la configuración actual incluye `"deploymentEnabled": false`.
+- No se requiere StackBlitz ni instalaciones en el teléfono para revisar el sitio de Pages.
+- El catálogo, comentarios y publicaciones siguen funcionando solo localmente en el navegador por ahora; no existe registro real ni pagos.
+- Nunca introducir credenciales del juego, contraseñas ni códigos de recuperación en el prototipo.
+
+## Desarrollo local en PC
+```bash
+npm install
+npm run dev
+```
